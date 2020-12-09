@@ -1,0 +1,25 @@
+{
+    "name": "sashapekh/vf-api-service",
+    "description": "send data to api service site",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexander Pekh",
+            "email": "sashapekh@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Sashapekh\\VfApi\\": "src/"
+        }
+    },
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Sashapekh\\VfApi\\VfApiServiceProvider"
+            ]
+        }
+    }
+}
