@@ -10,11 +10,18 @@
     ],
     "minimum-stability": "dev",
     "autoload": {
+        "classmap": [
+            "src/Models",
+            "src/Migrations",
+            "src/Service"
+        ],
         "psr-4": {
             "Sashapekh\\VfApi\\": "src/"
         }
     },
-    "require": {},
+    "require": {
+        "guzzlehttp/guzzle": "^7.0"
+    },
     "extra": {
         "laravel": {
             "providers": [
