@@ -10,12 +10,17 @@
 
 ## add variables to .env file
 
-VF_SERVICE_URL= <domain service>
-VF_SERVICE_TOKEN_URI= <uri for get token>
-VF_SERVICE_SMS_MULTIPLE= <uri for send multiple phones one message>
-VF_SERVICE_SMS_ONE= <uri for send a message for one phone>
-VF_SERVICE_USER= <user for service>
-VF_SERVICE_PASSWORD=< password for service>
+```VF_SERVICE_URL= <domain service>``` 
+
+```VF_SERVICE_TOKEN_URI= <uri for get token>```
+
+```VF_SERVICE_SMS_MULTIPLE= <uri for send multiple phones one message>```
+
+```VF_SERVICE_SMS_ONE= <uri for send a message for one phone>```
+
+```VF_SERVICE_USER= <user for service>```
+
+```VF_SERVICE_PASSWORD=< password for service>```
 
 ### usage in code
 ```php 
