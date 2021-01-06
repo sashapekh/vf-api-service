@@ -26,3 +26,8 @@
 ```php 
         return (new SendSmsService())->sendOneSms("<phone>", "<message>");
 ```
+### return values
+```
+    if error on server side, or could not resolve host return - null
+    if has success request , return - json string with data
+```
