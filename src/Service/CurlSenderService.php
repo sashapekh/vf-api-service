@@ -22,14 +22,15 @@ class CurlSenderService
         $this->jsonData = $jsonData;
     }
 
-    public function sendPostCurl()
+    public function sendPostCurl(): ?\Psr\Http\Message\ResponseInterface
     {
         try {
             return (new GuzzleClient())->post(
                 $this->mainDomain . $this->uri,
                 [
                     'headers' => $this->headers,
-                    'json' => $this->jsonData
+                    'json' => $this->jsonData,
+                    'http_errors'   => false,
                 ]
             );
         } catch (GuzzleMainException $guzzleException) {

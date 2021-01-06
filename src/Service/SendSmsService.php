@@ -34,6 +34,10 @@ class SendSmsService
             $jsonData
         ))->sendPostCurl();
 
-        return json_decode($response->getBody()->getContents(), true);
+        if (isset($response)) {
+            return json_decode($response->getBody()->getContents(), true);
+        }
+        return null;
+
     }
 }
