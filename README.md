@@ -23,8 +23,13 @@
 ```VF_SERVICE_PASSWORD=< password for service>```
 
 ### usage in code
+#### send to one phone
 ```php 
         return (new SendSmsService())->sendOneSms("<phone>", "<message>");
+```
+#### send to array of phones with same message
+```php 
+        return (new SendSmsService())->sendMultipleSms(['array of phones'], "<message>");
 ```
 ### return values
 ```
