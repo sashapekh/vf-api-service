@@ -2,8 +2,6 @@
 
 namespace Sashapekh\VfApi;
 
-use Psr\Http\Message\ResponseInterface;
-
 class SendSmsService
 {
     private $tokenService;
@@ -11,6 +9,9 @@ class SendSmsService
     private $mainDomain;
     private $sendMultipleSmsUri;
 
+    /**
+     * SendSmsService constructor.
+     */
     public function __construct()
     {
         $this->mainDomain = config('vf-service-variables.mainDomain');
@@ -19,11 +20,17 @@ class SendSmsService
         $this->sendMultipleSmsUri = config('vf-service-variables.SendMultipleUri');
     }
 
+    /**
+     * @param string $phone
+     * @param string $message
+     * @return mixed|null
+     */
     public function sendOneSms(string $phone, string $message)
     {
         $jsonData = [
             'phone' => $phone,
-            'message' => $message
+            'message' => $message,
+            'domain_url' => config('vf-service-variables.domain_url')
         ];
 
         $response = (new CurlSenderService(
@@ -36,6 +43,11 @@ class SendSmsService
 
     }
 
+    /**
+     * @param array $phones
+     * @param string $message
+     * @return mixed|null
+     */
     public function sendMultipleSms(array $phones = [], string $message = '')
     {
         if (empty($phones) && empty($message)) {
@@ -44,7 +56,8 @@ class SendSmsService
 
         $jsonData = [
             'phone' => $phones,
-            'message' => $message
+            'message' => $message,
+            'domain_url' => config('vf-service-variables.domain_url')
         ];
 
         $response = (new CurlSenderService(
@@ -56,15 +69,19 @@ class SendSmsService
         return $this->getProcessedResponse($response);
     }
 
+
     private function setHeaders(): array
     {
         return [
             'Accept' => 'application/json',
             'Authorization' => 'Bearer ' . $this->tokenService->getToken()
-
         ];
     }
 
+    /**
+     * @param $response
+     * @return mixed|null
+     */
     private function getProcessedResponse($response)
     {
         return isset($response)

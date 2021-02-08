@@ -5,5 +5,7 @@ return [
     'SendSmsUri'        => env('VF_SERVICE_SMS_ONE', false),
     'SendMultipleUri'   => env('VF_SERVICE_SMS_MULTIPLE', false),
     'user'              => env('VF_SERVICE_USER', false),
-    'password'          => env('VF_SERVICE_PASSWORD', false)
+    'password'          => env('VF_SERVICE_PASSWORD', false),
+    'domain_url'        => env("APP_URL"),
+    'test'              => true
 ];

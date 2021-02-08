@@ -9,11 +9,18 @@ use GuzzleHttp\Exception\GuzzleException as GuzzleMainException;
 
 class CurlSenderService
 {
+
     private $mainDomain;
     private $uri;
     private $headers;
     private $jsonData;
 
+    /**
+     * CurlSenderService constructor.
+     * @param string|null $uri
+     * @param array|null $headers
+     * @param array|null $jsonData
+     */
     public function __construct(string $uri = null, array $headers = null, array $jsonData = null)
     {
         $this->mainDomain = config('vf-service-variables.mainDomain');
@@ -22,6 +29,9 @@ class CurlSenderService
         $this->jsonData = $jsonData;
     }
 
+    /**
+     * @return \Psr\Http\Message\ResponseInterface|null
+     */
     public function sendPostCurl(): ?\Psr\Http\Message\ResponseInterface
     {
         try {
